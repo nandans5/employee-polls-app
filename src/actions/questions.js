@@ -1,6 +1,7 @@
 import { saveAnswer, saveNewQuestion } from "./users";
 import { saveQuestionAnswer, saveQuestion } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
+import { _saveQuestionAnswer } from "../utils/_DATA";
 
 export const RECEIVE_QUESTIONS = "RECIVE_QUESTIONS";
 export const ADD_ANSWER = "ADD_ANSWER";
@@ -20,11 +21,11 @@ function addQuestion(question) {
   };
 }
 
-export function addAnswer(id, authedUser, option) {
+export function addAnswer({ id, authedUser, option }) {
   return {
     type: ADD_ANSWER,
-    authedUser,
     id,
+    authedUser,
     option,
   };
 }
@@ -47,15 +48,17 @@ export function handleAddQuestion(optionOne, optionTwo) {
   };
 }
 
-export function handleSaveAnswer(info) {
+export function handleSaveAnswer({ id, authedUser, option }) {
   return (dispatch) => {
-    dispatch(saveAnswer(info.id, info.authedUser, info.option));
-    dispatch(addAnswer(info.id, info.authedUser, info.option));
+    dispatch(saveAnswer({ id, authedUser, option }));
+    dispatch(addAnswer({ id, authedUser, option }));
 
-    return saveQuestionAnswer(info.authedUser, info.id, info.option).catch(
-      (e) => {
-        alert("There was an error saving answer. Try again.");
-      }
-    );
+    return _saveQuestionAnswer({
+      authedUser: authedUser,
+      qid: id,
+      answer: option,
+    }).catch((e) => {
+      alert("There was an error saving answer. Try again.");
+    });
   };
 }

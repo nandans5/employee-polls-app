@@ -17,12 +17,12 @@ const App = (props) => {
     <div>
       <LoadingBar />
       {props.loading === true ? null : (
-        // <PollQuestion
-        //   match={{
-        //     params: { id: "am8ehyc8byjqgar0jgpub9" },
-        //   }}
-        // />
-        <Login />
+        <PollQuestion
+          match={{
+            params: { id: "am8ehyc8byjqgar0jgpub9" },
+          }}
+        />
+        // <Login />
       )}
     </div>
   );
