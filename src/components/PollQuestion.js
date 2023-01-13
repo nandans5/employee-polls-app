@@ -8,15 +8,20 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
   //   return alert("page not found");
   // }
   console.log("poll question: ", question);
-  const [check, setCheck] = useState(0);
 
-  // const checkOptionOne = question.optionOne.votes.filter(
-  //   (uid) => uid === authedUser
-  // ).length;
+  // const [optionOneCheck, setOptionOneCheck] = useState(
+  //   question.optionOne.votes.filter((uid) => uid === authedUser).length
+  // );
 
-  // const checkOptionTwo = question.optionTwo.votes.filter(
-  //   (uid) => uid === authedUser
-  // ).length;
+  let checkOptionOne = question.optionOne.votes.filter(
+    (uid) => uid === authedUser
+  ).length;
+
+  let checkOptionTwo = question.optionTwo.votes.filter(
+    (uid) => uid === authedUser
+  ).length;
+
+  const [check, setCheck] = useState(checkOptionOne + checkOptionTwo);
 
   const handleSubmit = (e, option) => {
     e.preventDefault();
@@ -38,11 +43,15 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
       <h3 className="center">Would you rather</h3>
       <div className="poll-options">
         <div>
-          <label>{question.optionOne.text}</label>
+          <label className={"answer" + (checkOptionOne === 1 ? "-check" : "")}>
+            {question.optionOne.text}
+          </label>
           <button
             onClick={(e) => {
-              setCheck(1);
               handleSubmit(e, "optionOne");
+              checkOptionOne = 1;
+              setCheck(1);
+              // setOptionOneCheck(1);
             }}
             disabled={check === 1}
           >
@@ -50,11 +59,14 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
           </button>
         </div>
         <div>
-          <label>{question.optionTwo.text}</label>
+          <label className={"answer" + (checkOptionTwo === 1 ? "-check" : "")}>
+            {question.optionTwo.text}
+          </label>
           <button
             onClick={(e) => {
-              setCheck(1);
               handleSubmit(e, "optionTwo");
+              checkOptionTwo = 1;
+              setCheck(1);
             }}
             disabled={check === 1}
           >
@@ -62,6 +74,26 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
           </button>
         </div>
       </div>
+      {check === 1 && (
+        <div>
+          <div>
+            Option 1: {question.optionOne.votes.length} votes -{" "}
+            {(question.optionOne.votes.length /
+              (question.optionOne.votes.length +
+                question.optionTwo.votes.length)) *
+              100}
+            %
+          </div>
+          <div>
+            Option 2: {question.optionTwo.votes.length} votes -{" "}
+            {(question.optionTwo.votes.length /
+              (question.optionOne.votes.length +
+                question.optionTwo.votes.length)) *
+              100}
+            %
+          </div>
+        </div>
+      )}
     </div>
   );
 };
