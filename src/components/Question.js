@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 const Tweet = (props) => {
   console.log(props);
@@ -13,12 +14,12 @@ const Tweet = (props) => {
       <div className="tweet-info">
         <span>{props.question.author}</span>
         <div>{formatDate(props.question.timestamp)}</div>
-        <button
+        <Link
+          to={`/questions/${props.question.id}`}
           className="show-question-button"
-          onClick={(e) => toQuestion(e, props.question.id)}
         >
           SHOW
-        </button>
+        </Link>
       </div>
     </div>
   );

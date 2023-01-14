@@ -3,6 +3,19 @@ import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { handleSaveAnswer } from "../actions/questions";
 
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
+
 const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
   // if (question === undefined) {
   //   return alert("page not found");
@@ -39,7 +52,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
   return (
     <div>
       <h2 className="center">Poll by {author.name}</h2>
-      <img src={author.avatarURL} className="poll-avatr" />
+      <img src={author.avatarURL} alt="avatar" className="poll-avatr" />
       <h3 className="center">Would you rather</h3>
       <div className="poll-options">
         <div>
@@ -99,7 +112,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
 };
 
 const mapStateToProps = ({ authedUser, questions, users }, props) => {
-  const { id } = props.match.params;
+  const { id } = props.router.params;
   const question = questions[id];
   const author = users[question.author];
 
@@ -111,4 +124,4 @@ const mapStateToProps = ({ authedUser, questions, users }, props) => {
   };
 };
 
-export default connect(mapStateToProps)(PollQuestion);
+export default withRouter(connect(mapStateToProps)(PollQuestion));

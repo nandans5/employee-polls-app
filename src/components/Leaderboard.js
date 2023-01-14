@@ -16,9 +16,16 @@ const Leaderboard = ({ users }) => {
           <tbody>
             {users.map((user) => (
               <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.questions.length}</td>
+                <td>
+                  <img
+                    classname="leaderboard-avatar"
+                    src={user.avatarURL}
+                    alt="avatar"
+                  />
+                  {user.name}
+                </td>
                 <td>{Object.keys(user.answers).length}</td>
+                <td>{user.questions.length}</td>
               </tr>
             ))}
           </tbody>

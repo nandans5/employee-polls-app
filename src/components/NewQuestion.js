@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
+import { useNavigate } from "react-router-dom";
 
 const NewQuestion = ({ dispatch }) => {
+  const navigate = useNavigate;
+
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
 
@@ -28,6 +31,8 @@ const NewQuestion = ({ dispatch }) => {
 
     setOptionOne("");
     setOptionTwo("");
+
+    navigate("/");
   };
 
   return (
