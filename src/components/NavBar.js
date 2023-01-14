@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 
 const NavBar = (props) => {
   return (
-    <nav className="nav">
-      <ul>
+    <nav className="nav" data-testid="nav-bar">
+      <ul data-testid="nav-bar-list">
         <li>
           <Link to="/">Home</Link>
         </li>

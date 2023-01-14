@@ -31,7 +31,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
     (uid) => uid === authedUser
   ).length;
 
-  const check = checkOptionOne + checkOptionTwo;
+  let check = checkOptionOne + checkOptionTwo;
 
   const handleSubmit = (e, option) => {
     e.preventDefault();
@@ -49,12 +49,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
   return (
     <div>
       <h2 className="center">Poll by {author.name}</h2>
-      <img
-        src={author.avatarURL}
-        alt="avatar"
-        className="poll-avatar"
-        height="250px"
-      />
+      <img src={author.avatarURL} alt="avatar" className="poll-avatar" />
       <h3 className="center">Would you rather</h3>
       <div className="poll-options">
         <div className="center-div">

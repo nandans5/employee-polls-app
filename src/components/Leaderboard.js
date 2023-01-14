@@ -5,7 +5,7 @@ const Leaderboard = ({ users }) => {
     <div>
       <h2 className="center">Leaderboard</h2>
       <div>
-        <table className="leaderboard-table">
+        <table className="leaderboard-table" data-testid="leaderboard-table">
           <thead>
             <tr>
               <th>Users</th>
@@ -18,10 +18,9 @@ const Leaderboard = ({ users }) => {
               <tr key={user.id}>
                 <td>
                   <img
-                    classname="leaderboard-avatar"
+                    className="leaderboard-avatar"
                     src={user.avatarURL}
                     alt="avatar"
-                    height="50px"
                   />
                   {user.name}
                 </td>

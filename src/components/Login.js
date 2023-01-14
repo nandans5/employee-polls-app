@@ -41,6 +41,7 @@ const Login = ({ users, dispatch }) => {
           value={userid}
           onChange={handleChangeUserid}
           className="text-area"
+          data-testid="userid-input"
         />
         <label>Password</label>
         <textarea
@@ -48,11 +49,13 @@ const Login = ({ users, dispatch }) => {
           value={password}
           onChange={handleChangePassword}
           className="text-area"
+          data-testid="password-input"
         />
         <button
           className="btn"
           type="submit"
           disabled={userid === "" || password === ""}
+          data-testid="submit-btn"
         >
           Submit
         </button>

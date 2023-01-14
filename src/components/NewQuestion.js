@@ -46,6 +46,7 @@ const NewQuestion = ({ dispatch }) => {
           value={optionOne}
           onChange={handleChangeOptionOne}
           className="text-area"
+          data-testid="option-one"
         />
         <label>Second Option</label>
         <textarea
@@ -53,11 +54,13 @@ const NewQuestion = ({ dispatch }) => {
           value={optionTwo}
           onChange={handleChangeOptionTwo}
           className="text-area"
+          data-testid="option-two"
         />
         <button
           className="btn"
           type="submit"
           disabled={optionOne === "" || optionTwo === ""}
+          data-testid="submit-btn"
         >
           Submit
         </button>
