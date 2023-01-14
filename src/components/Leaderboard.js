@@ -21,6 +21,7 @@ const Leaderboard = ({ users }) => {
                     classname="leaderboard-avatar"
                     src={user.avatarURL}
                     alt="avatar"
+                    height="50px"
                   />
                   {user.name}
                 </td>

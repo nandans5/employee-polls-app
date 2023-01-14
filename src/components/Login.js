@@ -34,7 +34,7 @@ const Login = ({ users, dispatch }) => {
   return (
     <div>
       <h2 className="center">Login Page</h2>
-      <form className="new-tweet" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>User ID</label>
         <textarea
           placeholder="enter userid"

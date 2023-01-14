@@ -10,8 +10,8 @@ const Tweet = (props) => {
   };
 
   return (
-    <div className="tweet">
-      <div className="tweet-info">
+    <div className="question">
+      <div className="question-info">
         <span>{props.question.author}</span>
         <div>{formatDate(props.question.timestamp)}</div>
         <Link

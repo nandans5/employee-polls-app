@@ -52,43 +52,60 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
   return (
     <div>
       <h2 className="center">Poll by {author.name}</h2>
-      <img src={author.avatarURL} alt="avatar" className="poll-avatr" />
+      <img
+        src={author.avatarURL}
+        alt="avatar"
+        className="poll-avatar"
+        height="300px"
+      />
       <h3 className="center">Would you rather</h3>
       <div className="poll-options">
-        <div>
-          <label className={"answer" + (checkOptionOne === 1 ? "-check" : "")}>
-            {question.optionOne.text}
-          </label>
-          <button
-            onClick={(e) => {
-              handleSubmit(e, "optionOne");
-              checkOptionOne = 1;
-              setCheck(1);
-              // setOptionOneCheck(1);
-            }}
-            disabled={check === 1}
-          >
-            option 1
-          </button>
+        <div className="center-div">
+          <div>
+            <label
+              className={"answer" + (checkOptionOne === 1 ? "-check" : "")}
+            >
+              {question.optionOne.text}
+            </label>
+          </div>
+          <div>
+            <button
+              onClick={(e) => {
+                handleSubmit(e, "optionOne");
+                checkOptionOne = 1;
+                setCheck(1);
+                // setOptionOneCheck(1);
+              }}
+              disabled={check === 1}
+            >
+              option 1
+            </button>
+          </div>
         </div>
-        <div>
-          <label className={"answer" + (checkOptionTwo === 1 ? "-check" : "")}>
-            {question.optionTwo.text}
-          </label>
-          <button
-            onClick={(e) => {
-              handleSubmit(e, "optionTwo");
-              checkOptionTwo = 1;
-              setCheck(1);
-            }}
-            disabled={check === 1}
-          >
-            option 2
-          </button>
+        <div className="center-div">
+          <div>
+            <label
+              className={"answer" + (checkOptionTwo === 1 ? "-check" : "")}
+            >
+              {question.optionTwo.text}
+            </label>
+          </div>
+          <div>
+            <button
+              onClick={(e) => {
+                handleSubmit(e, "optionTwo");
+                checkOptionTwo = 1;
+                setCheck(1);
+              }}
+              disabled={check === 1}
+            >
+              option 2
+            </button>
+          </div>
         </div>
       </div>
       {check === 1 && (
-        <div>
+        <div className="center-div">
           <div>
             Option 1: {question.optionOne.votes.length} votes -{" "}
             {(question.optionOne.votes.length /
