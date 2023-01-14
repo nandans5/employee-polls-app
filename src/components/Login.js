@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ users, dispatch }) => {
   const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +19,8 @@ const Login = ({ users, dispatch }) => {
 
     setUserid("");
     setPassword("");
+
+    navigate("/");
   };
 
   const handleChangeUserid = (e) => {
