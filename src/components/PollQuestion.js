@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { handleSaveAnswer } from "../actions/questions";
+import PollError from "./PollError";
 
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
@@ -17,14 +18,10 @@ const withRouter = (Component) => {
 };
 
 const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
-  // if (question === undefined) {
-  //   return alert("page not found");
-  // }
-  console.log("poll question: ", question);
-
-  // const [optionOneCheck, setOptionOneCheck] = useState(
-  //   question.optionOne.votes.filter((uid) => uid === authedUser).length
-  // );
+  // const [check, setCheck] = useState(0);
+  if (question === undefined) {
+    return <PollError />;
+  }
 
   let checkOptionOne = question.optionOne.votes.filter(
     (uid) => uid === authedUser
@@ -34,7 +31,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
     (uid) => uid === authedUser
   ).length;
 
-  const [check, setCheck] = useState(checkOptionOne + checkOptionTwo);
+  const check = checkOptionOne + checkOptionTwo;
 
   const handleSubmit = (e, option) => {
     e.preventDefault();
@@ -56,7 +53,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
         src={author.avatarURL}
         alt="avatar"
         className="poll-avatar"
-        height="300px"
+        height="250px"
       />
       <h3 className="center">Would you rather</h3>
       <div className="poll-options">
@@ -73,7 +70,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
               onClick={(e) => {
                 handleSubmit(e, "optionOne");
                 checkOptionOne = 1;
-                setCheck(1);
+                check = 1;
                 // setOptionOneCheck(1);
               }}
               disabled={check === 1}
@@ -95,7 +92,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
               onClick={(e) => {
                 handleSubmit(e, "optionTwo");
                 checkOptionTwo = 1;
-                setCheck(1);
+                check = 1;
               }}
               disabled={check === 1}
             >
@@ -131,7 +128,7 @@ const PollQuestion = ({ id, question, authedUser, author, dispatch }) => {
 const mapStateToProps = ({ authedUser, questions, users }, props) => {
   const { id } = props.router.params;
   const question = questions[id];
-  const author = users[question.author];
+  const author = questions[id] ? users[question.author] : null;
 
   return {
     id,

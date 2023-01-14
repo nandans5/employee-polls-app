@@ -9,31 +9,14 @@ import Leaderboard from "./Leaderboard";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import { Route, Routes } from "react-router-dom";
-import Poll404 from "./Poll404";
+import PollError from "./PollError";
 
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
-  // if (props.authedUser === "") {
-  //   return (
-  //     <div>
-  //       <Login />
-  //     </div>
-  //   );
-  // }
+
   return (
-    // <div>
-    //   <LoadingBar />
-    //   {props.loading === true ? null : (
-    //     // <PollQuestion
-    //     //   match={{
-    //     //     params: { id: "am8ehyc8byjqgar0jgpub9" },
-    //     //   }}
-    //     // />
-    //     <Dashboard />
-    //   )}
-    // </div>
     <Fragment>
       <LoadingBar />
       <div className="container">
@@ -49,7 +32,7 @@ const App = (props) => {
             <Route path="/add" element={<NewQuestion />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/poll404" element={<Poll404 />} />
+            <Route path="/pollerror" element={<PollError />} />
           </Routes>
         )}
       </div>

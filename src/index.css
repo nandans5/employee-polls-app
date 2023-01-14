@@ -102,7 +102,7 @@ li {
   flex-direction: column;
 }
 
-.new-tweet {
+.new-question {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;

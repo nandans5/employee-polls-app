@@ -1,4 +1,4 @@
-const Poll404 = () => {
+const PollError = () => {
   return (
     <div>
       <h2>error-404 page not found</h2>
@@ -6,4 +6,4 @@ const Poll404 = () => {
   );
 };
 
-export default Poll404;
+export default PollError;

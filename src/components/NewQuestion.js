@@ -39,7 +39,7 @@ const NewQuestion = ({ dispatch }) => {
     <div>
       <h2 className="center">Would You Rather</h2>
       <h3 className="center">Create Your Own Poll</h3>
-      <form className="new-tweet" onSubmit={handleSubmit}>
+      <form className="new-question" onSubmit={handleSubmit}>
         <label>First Option</label>
         <textarea
           placeholder="option one"
