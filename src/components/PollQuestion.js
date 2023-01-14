@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
 import { handleSaveAnswer } from "../actions/questions";
 import PollError from "./PollError";
 

@@ -3,12 +3,6 @@ import { formatDate } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 const Tweet = (props) => {
-  console.log(props);
-
-  const toQuestion = (e, id) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="question">
       <div className="question-info">
