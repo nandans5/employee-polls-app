@@ -15,7 +15,7 @@ const NavBar = (props) => {
           <Link to="/add">New</Link>
         </li>
         <li>
-          <Link to="/login">Logout</Link>
+          <Link to="/logout">Logout</Link>
         </li>
         {props.authedUser === "" ? <li></li> : <li>{props.authedUser}</li>}
       </ul>

@@ -10,6 +10,7 @@ import Login from "./Login";
 import NavBar from "./NavBar";
 import { Route, Routes } from "react-router-dom";
 import PollError from "./PollError";
+import Logout from "./Logout";
 
 const App = (props) => {
   useEffect(() => {
@@ -33,6 +34,7 @@ const App = (props) => {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/pollerror" element={<PollError />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         )}
       </div>
