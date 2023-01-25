@@ -1,6 +1,6 @@
 # Employee Polls Project
 
-This a React App that keeps a record of polls submitted and answered.
+This a React App that keeps a record of polls submitted and answered. It is built using React Components and a Redux store to store the data
 
 ## Getting Started
 
@@ -31,3 +31,7 @@ Allows the user to add a new poll
 
 - "/login"
   Allows users to login
+
+## Author
+
+Nandan Sivakumar
