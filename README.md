@@ -24,13 +24,16 @@ Displays all the polls
 Allows the user to add a new poll
 
 - "/leaderboard"
-  Displays the leaderboard of all the users
+  
+Displays the leaderboard of all the users
 
 - "questions/:id"
-  Allows the user to see the details of a specific poll
+
+Allows the user to see the details of a specific poll
 
 - "/login"
-  Allows users to login
+
+Allows users to login
 
 ## Author
 
