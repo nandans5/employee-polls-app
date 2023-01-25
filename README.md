@@ -15,7 +15,7 @@ This a React App that keeps a record of polls submitted and answered. It is buil
 
 ## Endpoints
 
-= "/"
+- "/"
 
 Displays all the polls
 
