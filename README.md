@@ -35,6 +35,11 @@ Allows the user to see the details of a specific poll
 
 Allows users to login
 
+## Sample Login
+
+- id : mtsamis
+- password: xyz123
+
 ## Author
 
 Nandan Sivakumar
